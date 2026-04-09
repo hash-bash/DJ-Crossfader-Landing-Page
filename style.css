@@ -142,6 +142,13 @@ body {
 }
 
 .hero h1 span {
+  --glitch-duration: 2.2s;
+  --glitch-cyan: rgba(103, 236, 255, 0.42);
+  --glitch-pink: rgba(255, 118, 221, 0.35);
+  --glitch-before-x: 0.04em;
+  --glitch-before-y: 0.02em;
+  --glitch-after-x: -0.03em;
+  --glitch-after-y: -0.01em;
   display: block;
   position: relative;
   width: fit-content;
@@ -153,28 +160,36 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 10px rgba(255, 118, 221, 0.16));
-  animation: title-glitch 2.2s steps(2, end) infinite;
+  animation: title-glitch var(--glitch-duration) steps(2, end) infinite;
 }
 
 .hero h1 span::before,
-.hero h1 span::after {
+.hero h1 span::after,
+.subtitle-link::before,
+.subtitle-link::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
   pointer-events: none;
-  animation: glitch-layer 2.2s steps(2, end) infinite;
 }
 
-.hero h1 span::before {
-  color: rgba(103, 236, 255, 0.42);
-  transform: translate(0.04em, 0.02em);
+.hero h1 span::before,
+.subtitle-link::before {
+  color: var(--glitch-cyan);
+  transform: translate(var(--glitch-before-x), var(--glitch-before-y));
   z-index: -1;
 }
 
+.hero h1 span::after,
+.subtitle-link::after {
+  color: var(--glitch-pink);
+  transform: translate(var(--glitch-after-x), var(--glitch-after-y));
+  z-index: -1;
+}
+
+.hero h1 span::before,
 .hero h1 span::after {
-  color: rgba(255, 118, 221, 0.35);
-  transform: translate(-0.03em, -0.01em);
-  z-index: -1;
+  animation: glitch-layer var(--glitch-duration) steps(2, end) infinite;
 }
 
 .hero h1 span:first-child {
@@ -188,6 +203,13 @@ body {
 }
 
 .subtitle-link {
+  --glitch-duration: 2.8s;
+  --glitch-cyan: rgba(103, 236, 255, 0.34);
+  --glitch-pink: rgba(255, 118, 221, 0.28);
+  --glitch-before-x: 0.04em;
+  --glitch-before-y: 0;
+  --glitch-after-x: -0.03em;
+  --glitch-after-y: 0;
   display: inline-block;
   margin: clamp(0.95rem, 2vw, 1.35rem) 0 0;
   font-size: clamp(1rem, 2.2vw, 1.45rem);
@@ -198,16 +220,7 @@ body {
   position: relative;
   text-shadow: 0 0 6px rgba(255, 118, 221, 0.08);
   transition: color 140ms ease, text-shadow 140ms ease, opacity 140ms ease;
-  animation: subtitle-glitch 2.8s steps(2, end) infinite;
-}
-
-.subtitle-link::before,
-.subtitle-link::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.7;
+  animation: subtitle-glitch var(--glitch-duration) steps(2, end) infinite;
 }
 
 .subtitle-link:hover,
@@ -220,15 +233,13 @@ body {
 }
 
 .subtitle-link::before {
-  color: rgba(103, 236, 255, 0.34);
-  transform: translate(0.04em, 0);
-  animation: subtitle-layer-a 2.8s steps(2, end) infinite;
+  opacity: 0.7;
+  animation: subtitle-layer-a var(--glitch-duration) steps(2, end) infinite;
 }
 
 .subtitle-link::after {
-  color: rgba(255, 118, 221, 0.28);
-  transform: translate(-0.03em, 0);
-  animation: subtitle-layer-b 2.8s steps(2, end) infinite;
+  opacity: 0.7;
+  animation: subtitle-layer-b var(--glitch-duration) steps(2, end) infinite;
 }
 
 @keyframes equalize {
