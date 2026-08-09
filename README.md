@@ -1,1 +1,1 @@
-DJ Crossfader Landing Page is a static landing site for the CrxFader project. The repository contains HTML and CSS used to build the page and links to the project's homepage. A GitHub Pages branch (gh-pages) has been created with a simple index that redirects to https://crxfader.com/.
+DJ Crossfader Landing Page is a static landing site for https://crxfader.com/. The repository contains HTML and CSS used to build the page and links to the project's homepage.
